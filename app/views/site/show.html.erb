@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="span7">
+        <ul class="breadcrumb">
+	    <li>
+	    <%= link_to "Início", site_index_path %> <span class="divider">/</span>
+	    </li>
+	    <li class="active">
+	    <span>Exibir</span>
+	    </li>
+	    </ul>
+	</div>
+</div>
+<div class="row">
+<% unless @geocoder.present? %>
+	<div class="span8">
+		<p>Localizando..</p>
+	</div>
+<% else %>
+	<div class="span8">
+		<table border="0" cellspacing="5" cellpadding="5">
+			<tr>
+				<td><b>Latitude:</b></td>
+				<td><%= @geocoder.lat %></td>
+			</tr>
+			<tr>
+				<td><b>Longitude:</b></td>
+				<td><%= @geocoder.lng %></td>
+			</tr>
+			<tr>
+				<td><b>Endereço Completo:</b></td>
+				<td><%= @geocoder.full_address %></td>
+			</tr>
+		</table>
+	</div>
+<% end -%>
+</div>
+<div class="row" style="padding-top: 10px;">
+	<div class="span3">
+		<%= link_to 'Voltar', site_index_path, :class => 'label label-info' %>
+	</div>
+</div>
